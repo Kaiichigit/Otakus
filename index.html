@@ -4,46 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paginar</title>
-    <style>
-        .pagination {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 200px;
-        }
-        .page-circles {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .page-circle {
-            margin: 5px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background-color: #f0f0f0;
-            cursor: pointer;
-        }
-        .page-circle.active {
-            background-color: #4eaee6;
-            color: #fff;
-        }
-        .pagination button {
-            margin: 5px;
-            padding: 10px 15px;
-            border: none;
-            background-color: #f0f0f0;
-            cursor: pointer;
-            outline: none;
-        }
-        .pagination button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
+    <script src="script.js"></script>
+    
 </head>
 <body>
     <div class="pagination">
@@ -59,40 +22,5 @@
             <button id="nextBtn" onclick="nextPage()">Siguiente</button>
         </div>
     </div>
-
-    <script>
-        let currentPage = 2;
-
-        function updatePagination() {
-            const circles = document.querySelectorAll('.page-circle');
-            circles.forEach(circle => {
-                circle.classList.remove('active');
-            });
-            circles[currentPage - 1].classList.add('active');
-
-            document.getElementById('prevBtn').disabled = currentPage === 1;
-            document.getElementById('nextBtn').disabled = currentPage === circles.length;
-        }
-
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePagination();
-            }
-        }
-
-        function nextPage() {
-            const circles = document.querySelectorAll('.page-circle');
-            if (currentPage < circles.length) {
-                currentPage++;
-                updatePagination();
-            }
-        }
-
-        function goToPage(page) {
-            currentPage = page;
-            updatePagination();
-        }
-    </script>
 </body>
 </html>
